@@ -1,9 +1,6 @@
 package com.myproject.webshop.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 
@@ -16,6 +13,9 @@ public class User {
     private String userSurname;
     private String userEmail;
     private String password;
+    @OneToMany
+    @JoinColumn(name = "item.id")
+    private Item item;
 
     public User(Long id, String userName, String userSurname, String userEmail, String password) {
         this.id = id;

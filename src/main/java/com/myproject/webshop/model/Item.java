@@ -1,9 +1,6 @@
 package com.myproject.webshop.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 
@@ -14,6 +11,10 @@ public class Item {
     private Long id;
     private String description;
     private String price;
+
+    @ManyToOne
+    @JoinColumn(name = "user.id")
+    private User user;
 
     public Item(Long id, String description, String price) {
         this.id = id;
