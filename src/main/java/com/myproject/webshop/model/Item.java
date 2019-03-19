@@ -14,7 +14,7 @@ public class Item {
 
     @ManyToOne
     @JoinColumn(name = "user.id")
-    private User user;
+    private User user;      //
 
     public Item(Long id, String description, String price) {
         this.id = id;

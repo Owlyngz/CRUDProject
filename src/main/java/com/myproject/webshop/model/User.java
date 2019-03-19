@@ -17,6 +17,7 @@ public class User {
     @JoinColumn(name = "item.id")
     private Item item;
 
+
     public User(Long id, String userName, String userSurname, String userEmail, String password) {
         this.id = id;
         this.userName = userName;
