@@ -13,6 +13,7 @@ public class User {
     private String userSurname;
     private String userEmail;
     private String password;
+
     @OneToMany
     @JoinColumn(name = "item.id")
     private Item item;
