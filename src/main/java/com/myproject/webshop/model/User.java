@@ -14,10 +14,9 @@ public class User {
     private String userEmail;
     private String password;
 
-    @OneToMany
-    @JoinColumn(name = "item.id")
-    private Item item;
-
+//    @OneToMany
+//    @JoinColumn(name = "item.id")
+//    private Item item;
 
     public User(Long id, String userName, String userSurname, String userEmail, String password) {
         this.id = id;

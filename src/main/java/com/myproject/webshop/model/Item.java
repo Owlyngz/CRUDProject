@@ -12,9 +12,9 @@ public class Item {
     private String description;
     private String price;
 
-    @ManyToOne
-    @JoinColumn(name = "user.id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user.id")
+//    private User user;
 
     public Item(Long id, String description, String price) {
         this.id = id;
@@ -31,9 +31,7 @@ public class Item {
 
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
     public void setId(Long id) {
         this.id = id;
