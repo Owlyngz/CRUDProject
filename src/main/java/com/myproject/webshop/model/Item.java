@@ -1,6 +1,7 @@
 package com.myproject.webshop.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 
@@ -10,25 +11,32 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String description;
-    private String price;
+    private double price;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
+    private List<CartDetails> cartDetails;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user.id")
-//    private User user;
 
-    public Item(Long id, String description, String price) {
+    public Item(Long id, String description, double price) {
         this.id = id;
         this.description = description;
         this.price = price;
     }
 
-    public Item(String description, String price) {
+    public Item(String description, double price) {
         this.description = description;
         this.price = price;
     }
 
     public Item() {
 
+    }
+
+    public List<CartDetails> getCartDetails() {
+        return cartDetails;
+    }
+
+    public void setCartDetails(List<CartDetails> cartDetails) {
+        this.cartDetails = cartDetails;
     }
 
     public Long getId() { return id; }
@@ -45,11 +53,11 @@ public class Item {
         this.description = description;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

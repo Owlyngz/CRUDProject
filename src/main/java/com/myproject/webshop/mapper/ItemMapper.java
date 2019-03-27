@@ -17,29 +17,28 @@ public class ItemMapper {
     }
 
 
-
-    public List<ItemDto>toDtoList(List<Item>items) {
+    public List<ItemDto> toDtoList(List<Item> items) {
 
         List<ItemDto> itemDto = new ArrayList<>();
 
-        for (Item item: items)  {
+        for (Item item : items) {
             itemDto.add((toDto(item)));
         }
         return itemDto;
     }
 
 
-    public Item toEntity(ItemDto itemDto)  {
+    public Item toEntity(ItemDto itemDto) {
 
         return new Item(itemDto.getId(), itemDto.getDescription(), itemDto.getPrice());
     }
 
 
-    public List<Item> toEntityList(List<ItemDto>itemDtoList) {
+    public List<Item> toEntityList(List<ItemDto> itemDtoList) {
 
-        List<Item>entityItemList = new ArrayList<>();
+        List<Item> entityItemList = new ArrayList<>();
 
-        for (ItemDto itemDto: itemDtoList)  {
+        for (ItemDto itemDto : itemDtoList) {
             entityItemList.add(toEntity(itemDto));
 
         }

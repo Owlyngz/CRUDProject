@@ -3,8 +3,8 @@ package com.myproject.webshop.usertest;
 import com.myproject.webshop.dto.UserDTO;
 import com.myproject.webshop.mapper.UserMapper;
 import com.myproject.webshop.model.User;
-import com.myproject.webshop.repositories.Repository;
-import com.myproject.webshop.services.Service;
+import com.myproject.webshop.repositories.UserRepository;
+import com.myproject.webshop.services.UserService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,22 +24,22 @@ import static org.mockito.ArgumentMatchers.anyLong;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserServiceTest {
+public class UserUserServiceTest {
 
 
-    //private Service service;
+    //private UserService userService;
     @Mock
-    private Repository repository;
+    private UserRepository userRepository;
     @Mock
     private UserMapper userMapper;
 
     @InjectMocks
-    Service service;
+    UserService userService;
 
     @Before
     public void setUp() {
      userMapper = new UserMapper();
-        service = new Service(repository, userMapper);
+        userService = new UserService(userRepository, userMapper);
 
         User user = new User();
         user.setUserName("Gvido");
@@ -62,11 +62,11 @@ public class UserServiceTest {
         users.add(user2);
 
 
-        Mockito.when(repository.findAllUsers()).thenReturn(users);
-        Mockito.when(repository.findUserById(anyLong())).thenReturn(user1);
-        Mockito.when(repository.save(any(User.class))).thenReturn(user2);
+        Mockito.when(userRepository.findAllUsers()).thenReturn(users);
+        Mockito.when(userRepository.findUserById(anyLong())).thenReturn(user1);
+        Mockito.when(userRepository.save(any(User.class))).thenReturn(user2);
 
-        Mockito.doNothing().when(repository).deleteById(anyLong());
+        Mockito.doNothing().when(userRepository).deleteById(anyLong());
 
 
     }
@@ -76,21 +76,21 @@ public class UserServiceTest {
 
         User user = new User();
 
-        List<UserDTO> savedDTO = service.saveMethod(user);
+        List<UserDTO> savedDTO = userService.saveMethod(user);
 
-        //Mockito.verify(repository.save(user), Mockito.times(1));
-        Mockito.verify(repository, Mockito.times(1)).save(user);
+        //Mockito.verify(userRepository.save(user), Mockito.times(1));
+        Mockito.verify(userRepository, Mockito.times(1)).save(user);
 
     }
 
     @Test
     public void updateMethodTest() {
 
-//        service.updateMethod(user, 11L);
+//        userService.updateMethod(user, 11L);
 
         UserDTO userDTO = new UserDTO(45L, "name", "lastname", "email", "pw123");
 
-        UserDTO updatedDTO = service.updateMethod(userDTO, 15L);
+        UserDTO updatedDTO = userService.updateMethod(userDTO, 15L);
         Long expected = 15L;
 
         Assert.assertEquals(expected,  updatedDTO.getId());
@@ -100,16 +100,16 @@ public class UserServiceTest {
     @Test
     public void deleteByIdTest() {
 
-        List<UserDTO> deletedDtosId = service.deleteById(3l);
+        List<UserDTO> deletedDtosId = userService.deleteById(3l);
 
-        Mockito.verify(repository, Mockito.times(1)).deleteById(3L);
+        Mockito.verify(userRepository, Mockito.times(1)).deleteById(3L);
 
     }
 
     @Test
     public void findByIdTest() {
 
-        UserDTO dto = service.findById(777L);
+        UserDTO dto = userService.findById(777L);
 
         Assert.assertEquals("Mother", dto.getUserName());
         Assert.assertEquals("Nature", dto.getUserSurname());
@@ -119,16 +119,16 @@ public class UserServiceTest {
     @Test(expected = HttpClientErrorException.class)
     public void deleteByIdNotNULL() {
 
-        List<UserDTO> deletedDtosId = service.deleteById(null);
+        List<UserDTO> deletedDtosId = userService.deleteById(null);
 
-        Mockito.verify(repository, Mockito.times(1)).deleteById(null);
+        Mockito.verify(userRepository, Mockito.times(1)).deleteById(null);
     }
 
     @Test(expected = HttpClientErrorException.class)
     public void deletedBy0Id() {
 
         try {
-            service.deleteById(0L);
+            userService.deleteById(0L);
         } catch (HttpClientErrorException e) {
             Assert.assertEquals(HttpStatus.I_AM_A_TEAPOT, e.getStatusCode());
             throw e;

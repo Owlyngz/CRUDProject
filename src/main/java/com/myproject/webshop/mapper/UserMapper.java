@@ -28,6 +28,7 @@ public class UserMapper {
         return userDTO;
     }
 
+
     public User toEntity(UserDTO userDTO) {
         return new User(userDTO.getId(), userDTO.getUserName(), userDTO.getUserSurname(), userDTO.getUserEmail(), userDTO.getPassword());
     }
@@ -44,6 +45,7 @@ public class UserMapper {
         return entityList;
 
     }
+
 
     public User updateUser(UserDTO userDTO, User user) {
 

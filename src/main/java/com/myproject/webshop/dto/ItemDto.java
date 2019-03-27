@@ -4,9 +4,9 @@ public class ItemDto {
 
     private Long id;
     private String description;
-    private String price;
+    private double price;
 
-    public ItemDto(Long id, String description, String price) {
+    public ItemDto(Long id, String description, double price) {
         this.id = id;
         this.description = description;
         this.price = price;
@@ -28,11 +28,11 @@ public class ItemDto {
         this.description = description;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

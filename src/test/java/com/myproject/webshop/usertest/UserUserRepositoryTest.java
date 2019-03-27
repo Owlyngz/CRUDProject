@@ -2,7 +2,7 @@ package com.myproject.webshop.usertest;
 
 
 import com.myproject.webshop.model.User;
-import com.myproject.webshop.repositories.Repository;
+import com.myproject.webshop.repositories.UserRepository;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,13 +15,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Ignore
-public class UserRepositoryTest {
+public class UserUserRepositoryTest {
 
     @Autowired
     private TestEntityManager entityManager;
 
     @Autowired
-    private Repository users;
+    private UserRepository users;
 
     @Test
     public void testFindByLastName() {

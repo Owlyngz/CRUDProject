@@ -2,9 +2,9 @@ package com.myproject.webshop.controller;
 
 import com.myproject.webshop.dto.ItemDto;
 import com.myproject.webshop.model.Item;
+import com.myproject.webshop.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.myproject.webshop.services.ItemService;
 
 import java.util.Collections;
 import java.util.List;
@@ -32,11 +32,5 @@ public class ItemController {
     public List<ItemDto> deleteItem(@PathVariable Long id) { return itemService.deleteItemById(id); }
 
     @PutMapping("/items/{id}/put")
-    public ItemDto updateItem(@RequestBody ItemDto itemDto, @PathVariable Long id ) {
-        return itemService.updateItem(itemDto, id);
-    }
-
-
-
-
+    public ItemDto updateItem(@RequestBody ItemDto itemDto, @PathVariable Long id ) { return itemService.updateItem(itemDto, id); }
 }

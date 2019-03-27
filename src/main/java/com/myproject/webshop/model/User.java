@@ -14,9 +14,9 @@ public class User {
     private String userEmail;
     private String password;
 
-//    @OneToMany
-//    @JoinColumn(name = "item.id")
-//    private Item item;
+    @OneToOne
+    @JoinColumn(name = "cart.id")
+    private Cart cart;
 
     public User(Long id, String userName, String userSurname, String userEmail, String password) {
         this.id = id;
