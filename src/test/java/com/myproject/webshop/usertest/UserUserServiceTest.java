@@ -26,8 +26,6 @@ import static org.mockito.ArgumentMatchers.anyLong;
 @RunWith(MockitoJUnitRunner.class)
 public class UserUserServiceTest {
 
-
-    //private UserService userService;
     @Mock
     private UserRepository userRepository;
     @Mock
@@ -38,7 +36,7 @@ public class UserUserServiceTest {
 
     @Before
     public void setUp() {
-     userMapper = new UserMapper();
+        userMapper = new UserMapper();
         userService = new UserService(userRepository, userMapper);
 
         User user = new User();
@@ -68,7 +66,6 @@ public class UserUserServiceTest {
 
         Mockito.doNothing().when(userRepository).deleteById(anyLong());
 
-
     }
 
     @Test
@@ -78,7 +75,6 @@ public class UserUserServiceTest {
 
         List<UserDTO> savedDTO = userService.saveMethod(user);
 
-        //Mockito.verify(userRepository.save(user), Mockito.times(1));
         Mockito.verify(userRepository, Mockito.times(1)).save(user);
 
     }
@@ -86,14 +82,12 @@ public class UserUserServiceTest {
     @Test
     public void updateMethodTest() {
 
-//        userService.updateMethod(user, 11L);
-
-        UserDTO userDTO = new UserDTO(45L, "name", "lastname", "email", "pw123");
+        UserDTO userDTO = new UserDTO(15L, "name", "lastname", "email", "pw123");
 
         UserDTO updatedDTO = userService.updateMethod(userDTO, 15L);
         Long expected = 15L;
 
-        Assert.assertEquals(expected,  updatedDTO.getId());
+        Assert.assertEquals(expected, updatedDTO.getId());
 
     }
 
@@ -121,7 +115,6 @@ public class UserUserServiceTest {
 
         List<UserDTO> deletedDtosId = userService.deleteById(null);
 
-        Mockito.verify(userRepository, Mockito.times(1)).deleteById(null);
     }
 
     @Test(expected = HttpClientErrorException.class)

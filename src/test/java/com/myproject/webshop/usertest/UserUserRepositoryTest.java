@@ -3,6 +3,7 @@ package com.myproject.webshop.usertest;
 
 import com.myproject.webshop.model.User;
 import com.myproject.webshop.repositories.UserRepository;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,6 +32,14 @@ public class UserUserRepositoryTest {
 
     @Test
     public void testSearchById() {
+
+        User user = new User(13L, "name","lastname", "Email", "passWORD222");
+
+        entityManager.persist(users);
+        entityManager.flush();
+
+        User found = users.findUserById(13L);
+        Assert.assertEquals(user, found);
 
     }
 

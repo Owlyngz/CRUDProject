@@ -19,6 +19,7 @@ public class CartDetails {
     public CartDetails() {
     }
 
+
     public Long getId() {
         return id;
     }

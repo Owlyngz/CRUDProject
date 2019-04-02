@@ -1,6 +1,5 @@
 package com.myproject.webshop.repositories;
 
-import com.myproject.webshop.model.Cart;
 import com.myproject.webshop.model.Item;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -19,5 +18,9 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
     Item findItemById(@Param("id") Long id);
 
     @Query("SELECT cd.item FROM CartDetails cd WHERE cd.cart.id=?1")
-    List<Item> findItemByCartId(@Param("id")Long id);
+    List<Item> findItemByCartId(@Param("id") Long id);
+
+    @Query("SELECT q.item FROM CartDetails q WHERE q.item.id=:id")
+    List<Item> findItemsQuantity(@Param("id") Long id);
+
 }

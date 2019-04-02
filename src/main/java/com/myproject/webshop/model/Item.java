@@ -12,23 +12,81 @@ public class Item {
     private Long id;
     private String description;
     private double price;
+    private String name;
+    private String type;
+    private int itemsLeft;
+    private String commodityProducer;
+    private Long quantity;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
     private List<CartDetails> cartDetails;
 
 
-    public Item(Long id, String description, double price) {
+    public Item(Long id, String description, double price, String name, String type, int itemsLeft, String commodityProducer, long quantity) {
         this.id = id;
         this.description = description;
         this.price = price;
+        this.name = name;
+        this.type = type;
+        this.itemsLeft = itemsLeft;
+        this.commodityProducer = commodityProducer;
+        this.quantity = quantity;
+
     }
 
-    public Item(String description, double price) {
+    public Item(String description, double price, String name, String type, int itemsLeft, String commodityProducer, long quantity) {
         this.description = description;
         this.price = price;
+        this.name = name;
+        this.type = type;
+        this.itemsLeft = itemsLeft;
+        this.commodityProducer = commodityProducer;
+        this.quantity = quantity;
+
     }
 
     public Item() {
 
+    }
+
+    public long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(long quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getItemsLeft() {
+        return itemsLeft;
+    }
+
+    public void setItemsLeft(int itemsLeft) {
+        this.itemsLeft = itemsLeft;
+    }
+
+    public String getCommodityProducer() {
+        return commodityProducer;
+    }
+
+    public void setCommodityProducer(String commodityProducer) {
+        this.commodityProducer = commodityProducer;
     }
 
     public List<CartDetails> getCartDetails() {

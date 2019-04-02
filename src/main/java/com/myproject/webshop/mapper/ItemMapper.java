@@ -13,7 +13,8 @@ public class ItemMapper {
 
     public ItemDto toDto(Item item) {
 
-        return new ItemDto(item.getId(), item.getDescription(), item.getPrice());
+        return new ItemDto(item.getId(), item.getDescription(), item.getPrice(), item.getName(), item.getType(), item.getItemsLeft(), item.getCommodityProducer(), item.getQuantity());
+
     }
 
 
@@ -30,7 +31,7 @@ public class ItemMapper {
 
     public Item toEntity(ItemDto itemDto) {
 
-        return new Item(itemDto.getId(), itemDto.getDescription(), itemDto.getPrice());
+        return new Item(itemDto.getId(), itemDto.getDescription(), itemDto.getPrice(), itemDto.getName(), itemDto.getType(), itemDto.getItemsLeft(), itemDto.getCommodityProducer(), itemDto.getQuantity());
     }
 
 
@@ -44,6 +45,7 @@ public class ItemMapper {
         }
         return entityItemList;
     }
+
 
     public Item updateItem(ItemDto itemDto, Item item) {
 

@@ -34,6 +34,6 @@ public class CartController {
         service.createCart(user);
     }
 
-    @PostMapping("/cart/sumprice/{user}")
-    public double sumCartPrice(@PathVariable User user) { return service.sumCartPrice(user); }
+    @PostMapping("/cart/sumprice/")
+    public double sumCartPrice(@RequestBody UserDTO userDTO) { return service.sumCartPrice(userDTO); }
 }

@@ -18,9 +18,7 @@ public class Cart {
     private List<CartDetails> cartDetailsList;
 
 
-    public List<CartDetails> getCartDetailsList() {
-        return cartDetailsList;
-    }
+    public List<CartDetails> getCartDetailsList() { return cartDetailsList; }
 
     public void setCartDetailsList(List<CartDetails> cartDetailsList) {
         this.cartDetailsList = cartDetailsList;
